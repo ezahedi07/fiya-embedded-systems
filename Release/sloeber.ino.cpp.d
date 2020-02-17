@@ -126,7 +126,9 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/HardwareSerial.h \
  I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Esp.h \
  I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\variants\esp32/pins_arduino.h \
- ..\Button.h ..\Main.ino
+ ..\Button.h \
+ I:\Sloeber\arduinoPlugin\libraries\DHT_sensor_library\1.3.8/DHT.h \
+ ..\Main.ino
 
 I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Arduino.h:
 
@@ -383,5 +385,7 @@ I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Esp.h:
 I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\variants\esp32/pins_arduino.h:
 
 ..\Button.h:
+
+I:\Sloeber\arduinoPlugin\libraries\DHT_sensor_library\1.3.8/DHT.h:
 
 ..\Main.ino:

@@ -9,6 +9,8 @@ RM := del
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include libraries\DHT_sensor_library\subdir.mk
+-include libraries\Adafruit_Unified_Sensor\subdir.mk
 -include core\core\libb64\subdir.mk
 -include core\core\subdir.mk
 -include objects.mk

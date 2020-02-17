@@ -1,30 +1,66 @@
 #include "Button.h"
+#include "DHT.h"
+#define DHTPIN 35
+#define DHTTYPE DHT11
+
 enum ledState{
 	LED_GREEN,
 	LED_RED,
 	LED_AMBER
 };
-
+enum systemState{
+	SYS_READY,
+	SYS_WAIT
+};
 
 ButtonState btnCurrent;
-const int LED_PIN = 13;
-const int R = 18, G = 19, B = 21;
-const int SWITCH_PIN = 14;
+
+const int SWITCH_PIN = 19;
 const int POTIN_PIN = 32;
+const int PIR_PIN= 27;
 int count = 0;
 int potCount = 0;
 Button* button = NULL;
-ledState ledCurrentState = LED_GREEN;
+ledState ledCurrentState;
+systemState sysState = SYS_WAIT;
+
+//LED Settings
+int rgbLedArray[3] = {1,2,3};
+const int ledR = 23, ledG = 21, ledB = 22;
+int R,  G,  B;
 
 
-
+//
+float humid;
+float temp;
+//
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
 
-	pinMode(LED_PIN, OUTPUT);
-	pinMode(R, OUTPUT);
-	pinMode(G, OUTPUT);
-	pinMode(B, OUTPUT);
+	//Attach the LED pins to a channel
+	ledcAttachPin(ledR, 1);
+	ledcAttachPin(ledG, 2);
+	ledcAttachPin(ledB, 3);
+
+	//Attach the Channel with a 12khz PWM and 8-bit resolution
+	ledcSetup(1, 12000, 8);
+	ledcSetup(2, 12000, 8);
+	ledcSetup(3, 12000, 8);
+
+	dht.begin();
+
+	for(int i=0; i < 3; i++) {
+	  // ledcWrite(channel, dutycycle)
+	  // For 8-bit resolution duty cycle is 0 - 255
+	  ledcWrite(rgbLedArray[i], 255);  // test high output of all leds in sequence
+	  delay(1000);
+	  ledcWrite(rgbLedArray[i], 0);
+	 }
+
+
+
+	pinMode(PIR_PIN, INPUT);
 	Serial.begin(9600);
 	button = new Button(SWITCH_PIN);
 }
@@ -34,51 +70,114 @@ void setup() {
 
 // The loop function is called in an endless loop
 void loop() {
+
+	if(sysState == SYS_WAIT){
+		sysCheck();
+	}else if (sysState == SYS_READY){
+
+		//Feature SET B
+		sensorRead();
+		ledSwitch();
+
+		//Feature SET C
+		sensorValOut();
+
+
+
+	}
+
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
 	if(btnRead != btnCurrent){
-
 				btnCurrent = btnRead;
 				switch (btnCurrent) {
 				case ButtonState::ON:
 					count++;
-					Serial.print("Class Btn Pressed (");
+					Serial.print("Btn Count (");
 					Serial.print(count);
 					Serial.print(")");
-					Serial.print("  Pot val (");
+					Serial.print(" Pot Val (");
 					Serial.print(potCount);
 					Serial.println(")");
 					break;
 				case ButtonState::OFF:
 					break;
 				}
-
 	}
-	ledStateSwitch();
 	if(count == 3){
 			count = 0;
 		}
-
 }
 
 
-void ledStateSwitch(){
-	if(count == 1){
+//Feature A - CHECK SYS STATE
+void sysCheck(){
+	//Check if the connected components are running and connected
+	//if No then wait an return SYS_WAIT;
+
+	//if yes then return SYS_READY
+
+	delay(3000);
+	Serial.println("Simulating Delay - Remove This");
+	sysState = SYS_READY;
+}
+
+
+void sensorRead(){
+// read the value of the sensors and set them to variables
+	delay(4000);
+	humid = dht.readHumidity();
+	temp = dht.readTemperature();
+
+	if (isnan(humid) || isnan(temp)){
+	    Serial.println(F("Failed to read from DHT sensor!"));
+	    return;
+	  }
+}
+
+void ledSwitch(){
+//switch the colour of the LED depending on variables
+	int testTemp = 18;
+	int testHum = 40;
+
+	//if(testTemp == lastTemp || testHum == lastHum)
+
+
+	if((testTemp >= 18 && testTemp <= 23) && (testHum >= 35 && testHum <= 60)){
+		//Set colour Green
+		R = 0;
+		G = 0;
+		B = 0;
 		ledCurrentState = LED_GREEN;
-		digitalWrite(R, LOW);
-		digitalWrite(G, HIGH);
-		digitalWrite(B, LOW);
-	}
-	else if(count == 2){
+	}else if((testTemp >= 16 && testTemp <= 27) && (testHum >= 25 && testHum <= 75)){
+		//Set Colour Amber
+		R = 255;
+		G = 80;
+		B = 0;
 		ledCurrentState = LED_AMBER;
-		digitalWrite(R, LOW);
-		digitalWrite(G, LOW);
-		digitalWrite(B, HIGH);
-	}
-	else if(count == 3){
+	}else{
+		//Set Colour Red
+		R = 255;
+		G = 0;
+		B = 0;
 		ledCurrentState = LED_RED;
-		digitalWrite(R, HIGH);
-		digitalWrite(G, LOW);
-		digitalWrite(B, LOW);
-		}
+	}
+
+	//int lastTemp = testTemp;
+	//int lastHum = testHum;
+
+	ledcWrite(1, R);
+	ledcWrite(2, G);
+	ledcWrite(3, B);
 }
+
+
+void sensorValOut(){
+//Print the value of the sensors as a string;
+	Serial.print("Temp: ");
+	Serial.print(temp);
+	Serial.print("  Humid: ");
+	Serial.println(humid);
+}
+
+
