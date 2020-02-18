@@ -1,7 +1,7 @@
 #include "Button.h"
-#include "DHT.h"
-#define DHTPIN 35
-#define DHTTYPE DHT11
+#include "dhtesp.h"
+#define DHTPIN 4
+#define DHTTYPE DHTesp::DHT11
 
 enum ledState{
 	LED_GREEN,
@@ -34,9 +34,11 @@ int R,  G,  B;
 float humid;
 float temp;
 //
-DHT dht(DHTPIN, DHTTYPE);
+DHTesp dht;
 
 void setup() {
+
+	dht.setup(DHTPIN, DHTesp::DHT11);
 
 	//Attach the LED pins to a channel
 	ledcAttachPin(ledR, 1);
@@ -48,7 +50,7 @@ void setup() {
 	ledcSetup(2, 12000, 8);
 	ledcSetup(3, 12000, 8);
 
-	dht.begin();
+	//dht.begin();
 
 	for(int i=0; i < 3; i++) {
 	  // ledcWrite(channel, dutycycle)
@@ -126,11 +128,12 @@ void sysCheck(){
 void sensorRead(){
 // read the value of the sensors and set them to variables
 	delay(4000);
-	humid = dht.readHumidity();
-	temp = dht.readTemperature();
+	TempAndHumidity newValues = dht.getTempAndHumidity();
+	humid = newValues.humidity;
+	temp = newValues.temperature;
 
 	if (isnan(humid) || isnan(temp)){
-	    Serial.println(F("Failed to read from DHT sensor!"));
+	    Serial.println(F("Failed to read from DHTesp sensor!"));
 	    return;
 	  }
 }
@@ -143,13 +146,13 @@ void ledSwitch(){
 	//if(testTemp == lastTemp || testHum == lastHum)
 
 
-	if((testTemp >= 18 && testTemp <= 23) && (testHum >= 35 && testHum <= 60)){
+	if((temp >= 18 && temp <= 23) && (humid >= 35 && humid <= 60)){
 		//Set colour Green
 		R = 0;
-		G = 0;
+		G = 255;
 		B = 0;
 		ledCurrentState = LED_GREEN;
-	}else if((testTemp >= 16 && testTemp <= 27) && (testHum >= 25 && testHum <= 75)){
+	}else if((temp >= 16 && temp <= 27) && (humid >= 25 && humid <= 75)){
 		//Set Colour Amber
 		R = 255;
 		G = 80;

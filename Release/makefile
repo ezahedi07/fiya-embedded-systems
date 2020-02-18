@@ -9,8 +9,7 @@ RM := del
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include libraries\DHT_sensor_library\subdir.mk
--include libraries\Adafruit_Unified_Sensor\subdir.mk
+-include libraries\DHT_sensor_library_for_ESPx\subdir.mk
 -include core\core\libb64\subdir.mk
 -include core\core\subdir.mk
 -include objects.mk
@@ -52,39 +51,39 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 AR += \
-C:\Users\Joshua\Documents\sloeber-workspace\fiya-embedded-systems\Release\arduino.ar \
+M:\git\fiya-embedded-systems\Release\arduino.ar \
 
 ELF += \
-fiya-embedded-systems.elf \
+NULL___Embedded_Systems.elf \
 
 HEX += \
-fiya-embedded-systems.hex \
+NULL___Embedded_Systems.hex \
 
 
 # All Target
-all: fiya-embedded-systems
+all: NULL___Embedded_Systems
 
 # Tool invocations
-fiya-embedded-systems: $(HEX)
+NULL___Embedded_Systems: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"I:\Sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-size" -A "C:/Users/Joshua/Documents/sloeber-workspace/fiya-embedded-systems/Release/fiya-embedded-systems.elf"
+	"C:\apps\sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-size" -A "M:/git/fiya-embedded-systems/Release/NULL___Embedded_Systems.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-C:\Users\Joshua\Documents\sloeber-workspace\fiya-embedded-systems\Release\arduino.ar: $(AR_OBJ)
+M:\git\fiya-embedded-systems\Release\arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"I:\Sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-ar" cru     C:/Users/Joshua/Documents/sloeber-workspace/fiya-embedded-systems/Release/arduino.ar $(AR_OBJ)
+	"C:\apps\sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-ar" cru     M:/git/fiya-embedded-systems/Release/arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-fiya-embedded-systems.elf: $(LINK_OBJ) $(AR)
+NULL___Embedded_Systems.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"I:\Sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-gcc" -nostdlib "-LI:\Sloeber\/arduinoPlugin/packages/esp32/hardware/esp32/1.0.4/tools/sdk/lib" "-LI:\Sloeber\/arduinoPlugin/packages/esp32/hardware/esp32/1.0.4/tools/sdk/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.libgcc.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority  -u __cxa_guard_dummy -u __cxx_fatal_exception  -Wl,--start-group   $(LINK_OBJ)   C:/Users/Joshua/Documents/sloeber-workspace/fiya-embedded-systems/Release/arduino.ar  -lgcc -lesp32 -lphy -lesp_http_client -lmbedtls -lrtc -lesp_http_server -lbtdm_app -lspiffs -lbootloader_support -lmdns -lnvs_flash -lfatfs -lpp -lnet80211 -ljsmn -lface_detection -llibsodium -lvfs -ldl_lib -llog -lfreertos -lcxx -lsmartconfig_ack -lxtensa-debug-module -lheap -ltcpip_adapter -lmqtt -lulp -lfd -lfb_gfx -lnghttp -lprotocomm -lsmartconfig -lm -lethernet -limage_util -lc_nano -lsoc -ltcp_transport -lc -lmicro-ecc -lface_recognition -ljson -lwpa_supplicant -lmesh -lesp_https_ota -lwpa2 -lexpat -llwip -lwear_levelling -lapp_update -ldriver -lbt -lespnow -lcoap -lasio -lnewlib -lconsole -lapp_trace -lesp32-camera -lhal -lprotobuf-c -lsdmmc -lcore -lpthread -lcoexist -lfreemodbus -lspi_flash -lesp-tls -lwpa -lwifi_provisioning -lwps -lesp_adc_cal -lesp_event -lopenssl -lesp_ringbuf -lfr  -lstdc++ -Wl,--end-group -Wl,-EL -o "C:/Users/Joshua/Documents/sloeber-workspace/fiya-embedded-systems/Release/fiya-embedded-systems.elf"
+	"C:\apps\sloeber\arduinoPlugin\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0/bin/xtensa-esp32-elf-gcc" -nostdlib "-LC:\apps\sloeber\/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/tools/sdk/lib" "-LC:\apps\sloeber\/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/tools/sdk/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority  -u __cxa_guard_dummy -u __cxx_fatal_exception  -Wl,--start-group   $(LINK_OBJ)   M:/git/fiya-embedded-systems/Release/arduino.ar  -lgcc -lopenssl -lbtdm_app -lfatfs -lwps -lcoexist -lwear_levelling -lesp_http_client -lprotobuf-c -lhal -lnewlib -ldriver -lbootloader_support -lpp -lfreemodbus -lmesh -lsmartconfig -ljsmn -lwpa -lethernet -lphy -lfrmn -lapp_trace -lfr_coefficients -lconsole -lulp -lwpa_supplicant -lfreertos -lbt -lmicro-ecc -lesp32-camera -lcxx -lxtensa-debug-module -ltcp_transport -lmdns -lvfs -lmtmn -lesp_ringbuf -lsoc -lcore -lfb_gfx -lsdmmc -llibsodium -lcoap -ltcpip_adapter -lprotocomm -lesp_event -limage_util -lc_nano -lesp-tls -lasio -lrtc -lspi_flash -lwpa2 -lwifi_provisioning -lesp32 -lface_recognition -lapp_update -lnghttp -lspiffs -lface_detection -lunity -lesp_https_server -lespnow -lnvs_flash -lesp_adc_cal -llog -ldl_lib -lsmartconfig_ack -lexpat -lfd_coefficients -lm -lmqtt -lc -lheap -lmbedtls -llwip -lnet80211 -lesp_http_server -lpthread -ljson -lesp_https_ota  -lstdc++ -Wl,--end-group -Wl,-EL -o "M:/git/fiya-embedded-systems/Release/NULL___Embedded_Systems.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-fiya-embedded-systems.hex: $(ELF)
+NULL___Embedded_Systems.hex: $(ELF)
 	@echo 'Do all objcopy commands'
 	${A.RECIPE.OBJCOPY.EEP.PATTERN}
 	${A.RECIPE.OBJCOPY.HEX.PATTERN}

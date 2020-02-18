@@ -37,6 +37,5 @@ SUBDIRS := \
 . \
 core\core \
 core\core\libb64 \
-libraries\Adafruit_Unified_Sensor \
-libraries\DHT_sensor_library \
+libraries\DHT_sensor_library_for_ESPx \
 

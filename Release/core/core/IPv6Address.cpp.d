@@ -1,389 +1,389 @@
 core\core\IPv6Address.cpp.o: \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32\IPv6Address.cpp \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Arduino.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdint.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\_default_types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\features.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\_intsup.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdio.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\_ansi.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\newlib.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\config.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\ieeefp.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core-isa.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\cdefs.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\reent.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\_ansi.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\_types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\_types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\lock.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\sched.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\stdio.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdlib.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\stdlib.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\alloca.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\string.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\string.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\inttypes.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\freertos.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\FreeRTOSConfig.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\config\sdkconfig.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_config.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\hal.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtensa-versions.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core-matmap.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\tie.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\system.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_context.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\corebits.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime-frames.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom\ets_sys.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_assert.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\assert.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\projdefs.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portable.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\deprecated_definitions.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portmacro.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\specreg.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime-core-state.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_crosscore_int.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_timer.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_err.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\heap\esp_heap_caps.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\heap\multi_heap.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc_memory_layout.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_attr.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portbenchmark.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\mpu_wrappers.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_system.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_sleep.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\driver\driver\gpio.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_types.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_reg.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_struct.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\rtc_io_reg.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\io_mux_reg.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_sig_map.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom\gpio.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_pins.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_intr_alloc.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_periph.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\driver\driver\touch_pad.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_intr.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom/ets_sys.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_api.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\touch_channel.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\task.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\limits.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\list.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\semphr.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\queue.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\math.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-log.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\log\esp_log.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\log\esp_log_internal.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-matrix.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-uart.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-gpio.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-touch.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-dac.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-adc.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-spi.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-i2c.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\event_groups.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\timers.h \
- i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\task.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-ledc.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-rmt.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-sigmadelta.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-timer.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-bt.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-psram.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-cpu.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp8266-compat.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/stdlib_noniso.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/binary.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WCharacter.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WString.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/pgmspace.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Stream.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Print.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Printable.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPAddress.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WString.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Printable.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Client.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Server.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Udp.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Stream.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPAddress.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/HardwareSerial.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Esp.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\variants\esp32/pins_arduino.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPv6Address.h \
- I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Print.h
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32\IPv6Address.cpp \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Arduino.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdint.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\_default_types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\features.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\_intsup.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdio.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\_ansi.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\newlib.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\config.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\ieeefp.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core-isa.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\cdefs.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\reent.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\_ansi.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\_types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\_types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\lock.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\sched.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\stdio.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdlib.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\stdlib.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\alloca.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\string.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\string.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\inttypes.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\freertos.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\FreeRTOSConfig.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\config\sdkconfig.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_config.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\hal.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtensa-versions.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core-matmap.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\tie.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\system.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_context.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\corebits.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime-frames.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom\ets_sys.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_assert.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\assert.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\projdefs.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portable.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\deprecated_definitions.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portmacro.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\specreg.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime-core-state.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_crosscore_int.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_timer.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_err.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\heap\esp_heap_caps.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\heap\multi_heap.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc_memory_layout.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_attr.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portbenchmark.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\mpu_wrappers.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_system.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_sleep.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\driver\driver\gpio.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_types.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_reg.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_struct.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\rtc_io_reg.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\io_mux_reg.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_sig_map.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom\gpio.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_pins.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_intr_alloc.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_periph.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\driver\driver\touch_pad.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_intr.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom/ets_sys.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_api.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\touch_channel.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\task.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\limits.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\list.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\semphr.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\queue.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\math.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-log.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\log\esp_log.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\log\esp_log_internal.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-matrix.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-uart.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-gpio.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-touch.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-dac.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-adc.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-spi.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-i2c.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\event_groups.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\timers.h \
+ c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\task.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-ledc.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-rmt.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-sigmadelta.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-timer.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-bt.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-psram.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-cpu.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp8266-compat.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/stdlib_noniso.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/binary.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WCharacter.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WString.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/pgmspace.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Stream.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Print.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Printable.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPAddress.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WString.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Printable.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Client.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Server.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Udp.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Stream.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPAddress.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/HardwareSerial.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Esp.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\variants\esp32/pins_arduino.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPv6Address.h \
+ C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Print.h
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Arduino.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Arduino.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdint.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdint.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\_default_types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\_default_types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\features.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\features.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\_intsup.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\_intsup.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdio.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdio.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\_ansi.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\_ansi.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\newlib.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\newlib.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\config.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\config.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\ieeefp.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\ieeefp.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core-isa.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core-isa.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\cdefs.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\cdefs.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\reent.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\reent.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\_ansi.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\_ansi.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\_types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\_types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\_types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\_types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\lock.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\lock.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\sched.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\sched.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\stdio.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\stdio.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\stdlib.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\stdlib.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\machine\stdlib.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\machine\stdlib.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\alloca.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\alloca.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\string.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\string.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\sys\string.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\sys\string.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\inttypes.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\inttypes.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\freertos.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\freertos.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\FreeRTOSConfig.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\FreeRTOSConfig.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\config\sdkconfig.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\config\sdkconfig.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_config.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_config.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\hal.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\hal.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtensa-versions.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtensa-versions.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\core-matmap.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\core-matmap.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\tie.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\tie.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\system.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\system.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_context.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_context.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\corebits.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\corebits.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime-frames.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime-frames.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom\ets_sys.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom\ets_sys.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_assert.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_assert.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\assert.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\assert.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\projdefs.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\projdefs.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portable.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portable.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\deprecated_definitions.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\deprecated_definitions.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portmacro.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portmacro.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\config\specreg.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\config\specreg.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\xtensa\xtruntime-core-state.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\xtensa\xtruntime-core-state.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_crosscore_int.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_crosscore_int.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_timer.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_timer.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_err.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_err.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\heap\esp_heap_caps.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\heap\esp_heap_caps.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\heap\multi_heap.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\heap\multi_heap.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc_memory_layout.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc_memory_layout.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_attr.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_attr.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\portbenchmark.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\portbenchmark.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\mpu_wrappers.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\mpu_wrappers.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_system.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_system.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_sleep.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_sleep.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\driver\driver\gpio.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\driver\driver\gpio.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_types.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_types.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_reg.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_reg.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\soc.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\soc.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_struct.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_struct.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\rtc_io_reg.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\rtc_io_reg.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\io_mux_reg.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\io_mux_reg.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_sig_map.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_sig_map.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom\gpio.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom\gpio.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_pins.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_pins.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_intr_alloc.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_intr_alloc.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\gpio_periph.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\gpio_periph.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\driver\driver\touch_pad.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\driver\driver\touch_pad.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\esp_intr.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\esp_intr.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\esp32\rom/ets_sys.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\esp32\rom/ets_sys.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\xtensa_api.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\xtensa_api.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\soc\soc\touch_channel.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\soc\soc\touch_channel.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\task.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\task.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\limits.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\limits.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\list.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\list.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\semphr.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\semphr.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\queue.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\queue.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\newlib\math.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\newlib\math.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-log.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-log.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\log\esp_log.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\log\esp_log.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\log\esp_log_internal.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\log\esp_log_internal.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-matrix.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-matrix.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-uart.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-uart.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-gpio.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-gpio.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-touch.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-touch.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-dac.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-dac.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-adc.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-adc.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-spi.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-spi.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-i2c.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-i2c.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\event_groups.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\event_groups.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\timers.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\timers.h:
 
-i:\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.4\tools\sdk\include\freertos\freertos\task.h:
+c:\apps\sloeber\arduinoplugin\packages\esp32\hardware\esp32\1.0.1\tools\sdk\include\freertos\freertos\task.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-ledc.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-ledc.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-rmt.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-rmt.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-sigmadelta.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-sigmadelta.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-timer.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-timer.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-bt.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-bt.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-psram.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-psram.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp32-hal-cpu.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp32-hal-cpu.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/esp8266-compat.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/esp8266-compat.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/stdlib_noniso.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/stdlib_noniso.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/binary.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/binary.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WCharacter.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WCharacter.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WString.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WString.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/pgmspace.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/pgmspace.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Stream.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Stream.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Print.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Print.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Printable.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Printable.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPAddress.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPAddress.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/WString.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/WString.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Printable.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Printable.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Client.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Client.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Server.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Server.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Udp.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Udp.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Stream.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Stream.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPAddress.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPAddress.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/HardwareSerial.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/HardwareSerial.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Esp.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Esp.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\variants\esp32/pins_arduino.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\variants\esp32/pins_arduino.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/IPv6Address.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/IPv6Address.h:
 
-I:\Sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.4\cores\esp32/Print.h:
+C:\apps\sloeber\arduinoPlugin\packages\esp32\hardware\esp32\1.0.1\cores\esp32/Print.h:
