@@ -17,7 +17,7 @@ ButtonState btnCurrent;
 
 const int SWITCH_PIN = 19;
 const int POTIN_PIN = 32;
-const int PIR_PIN= 27;
+const int PIR_PIN= 16;
 int count = 0;
 int potCount = 0;
 Button* button = NULL;
@@ -28,13 +28,16 @@ systemState sysState = SYS_WAIT;
 int rgbLedArray[3] = {1,2,3};
 const int ledR = 23, ledG = 21, ledB = 22;
 int R,  G,  B;
-
+long currentTime, oldTime;
 
 //
 float humid;
 float temp;
 //
 DHTesp dht;
+void printOut(){
+		Serial.println("PIR HIGH");
+	}
 
 void setup() {
 
@@ -50,6 +53,8 @@ void setup() {
 	ledcSetup(2, 12000, 8);
 	ledcSetup(3, 12000, 8);
 
+	pinMode(PIR_PIN,INPUT);
+
 	//dht.begin();
 
 	for(int i=0; i < 3; i++) {
@@ -62,9 +67,14 @@ void setup() {
 
 
 
+	attachInterrupt(digitalPinToInterrupt(PIR_PIN), printOut, RISING);
+
 	pinMode(PIR_PIN, INPUT);
 	Serial.begin(9600);
 	button = new Button(SWITCH_PIN);
+
+	currentTime = millis();
+	oldTime = 0;
 }
 
 
@@ -72,7 +82,7 @@ void setup() {
 
 // The loop function is called in an endless loop
 void loop() {
-
+	currentTime = millis();
 	if(sysState == SYS_WAIT){
 		sysCheck();
 	}else if (sysState == SYS_READY){
@@ -82,8 +92,13 @@ void loop() {
 		ledSwitch();
 
 		//Feature SET C
-		sensorValOut();
 
+
+//		if(digitalRead(SWITCH_PIN) == LOW){
+//			Serial.println("PIR LOW");
+//		}else if(digitalRead(SWITCH_PIN) == HIGH){
+//			Serial.println("PIR HIGH");
+//		}
 
 
 	}
@@ -126,26 +141,29 @@ void sysCheck(){
 
 
 void sensorRead(){
-// read the value of the sensors and set them to variables
-	delay(4000);
-	TempAndHumidity newValues = dht.getTempAndHumidity();
-	humid = newValues.humidity;
-	temp = newValues.temperature;
 
-	if (isnan(humid) || isnan(temp)){
-	    Serial.println(F("Failed to read from DHTesp sensor!"));
-	    return;
-	  }
+// read the value of the sensors and set them to variables
+	//delay(2000);
+	if(( millis() - oldTime ) > 2000){
+		TempAndHumidity newValues = dht.getTempAndHumidity();
+		humid = newValues.humidity;
+		temp = newValues.temperature;
+		oldTime = millis();
+		Serial.println(oldTime);
+		Serial.println( millis());
+		if (isnan(humid) || isnan(temp)){
+			    Serial.println(F("Failed to read from DHTesp sensor!"));
+			    return;
+			  }
+		sensorValOut();
+	}
+
+
+
 }
 
 void ledSwitch(){
 //switch the colour of the LED depending on variables
-	int testTemp = 18;
-	int testHum = 40;
-
-	//if(testTemp == lastTemp || testHum == lastHum)
-
-
 	if((temp >= 18 && temp <= 23) && (humid >= 35 && humid <= 60)){
 		//Set colour Green
 		R = 0;

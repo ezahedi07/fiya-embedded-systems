@@ -541,7 +541,7 @@ environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.BOARD_NAM
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.BOARD_NAME/value=ESP32 Dev Module
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.COM_PORT/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.COM_PORT/operation=replace
-environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.COM_PORT/value=COM5
+environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.COM_PORT/value=COM6
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.ECLIPSE_LOCATION/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.ECLIPSE_LOCATION/operation=replace
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.ECLIPSE_LOCATION/value=I\:\\Sloeber\\
@@ -583,7 +583,7 @@ environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PACKAGE_I
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PACKAGE_ID/value=esp32
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PROJECT_NAME/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PROJECT_NAME/operation=replace
-environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PROJECT_NAME/value=NULL___Embedded_Systems
+environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.PROJECT_NAME/value=fiya-embedded-systems
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.SELECTED.PLATFORM/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.SELECTED.PLATFORM/operation=replace
 environment/project/io.sloeber.core.toolChain.release.326787923/JANTJE.SELECTED.PLATFORM/value=${eclipse_home}/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1
