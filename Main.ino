@@ -1,46 +1,73 @@
 #include "Button.h"
 #include "dhtesp.h"
+#include <Preferences.h>
 #define DHTPIN 4
 #define DHTTYPE DHTesp::DHT11
 
 enum ledState{
 	LED_GREEN,
-	LED_RED,
-	LED_AMBER
+	LED_AMBER,
+	LED_RED
+
 };
+
 enum systemState{
 	SYS_READY,
 	SYS_WAIT
 };
 
+enum occupiedState{
+	ROOM_OCCUPIED,
+	ROOM_VACANT
+};
+
 ButtonState btnCurrent;
 
+//Pin numbers
 const int SWITCH_PIN = 19;
 const int POTIN_PIN = 32;
-const int PIR_PIN= 16;
+const int PIR_PIN= 14;
+
+//Global counters
 int count = 0;
 int potCount = 0;
+int pirCount = 0;
+
+//Set button
 Button* button = NULL;
+
+//set various system states
 ledState ledCurrentState;
 systemState sysState = SYS_WAIT;
+occupiedState occupiedStatus = ROOM_VACANT;
 
 //LED Settings
 int rgbLedArray[3] = {1,2,3};
 const int ledR = 23, ledG = 21, ledB = 22;
 int R,  G,  B;
-long currentTime, oldTime;
 
-//
+//global timer - poor method, look for other implimentations
+long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer;
+
+//DHT11 SENSOR Vars
 float humid;
 float temp;
-//
 DHTesp dht;
+
+//Global string out
+String stringOut;
+
+//Preference setup
+Preferences preferences;
+
 void printOut(){
 		Serial.println("PIR HIGH");
 	}
 
+
 void setup() {
 
+	//Connect DHT library to the DHT pin
 	dht.setup(DHTPIN, DHTesp::DHT11);
 
 	//Attach the LED pins to a channel
@@ -53,28 +80,38 @@ void setup() {
 	ledcSetup(2, 12000, 8);
 	ledcSetup(3, 12000, 8);
 
+	//Attach the PIR sensor pin
 	pinMode(PIR_PIN,INPUT);
 
-	//dht.begin();
 
+	//Attach the button to the switch pin
+	button = new Button(SWITCH_PIN);
+
+	//Test RGB LED
 	for(int i=0; i < 3; i++) {
-	  // ledcWrite(channel, dutycycle)
-	  // For 8-bit resolution duty cycle is 0 - 255
-	  ledcWrite(rgbLedArray[i], 255);  // test high output of all leds in sequence
+	  ledcWrite(rgbLedArray[i], 255);
 	  delay(1000);
 	  ledcWrite(rgbLedArray[i], 0);
 	 }
 
 
-
+	//PIR interrupt
 	attachInterrupt(digitalPinToInterrupt(PIR_PIN), printOut, RISING);
 
-	pinMode(PIR_PIN, INPUT);
+	//Begin Serial listener
 	Serial.begin(9600);
-	button = new Button(SWITCH_PIN);
 
-	currentTime = millis();
-	oldTime = 0;
+
+	//Initialise the timer variables
+	dhtTimer = 0;
+	pirTimer = 0;
+	pirLongTimer = 0;
+	stringTimer = -5100;
+
+	//preference setter
+	preferences.begin("localData", false);
+	stringOut = preferences.getString("mainOut", "Empty");
+
 }
 
 
@@ -82,6 +119,7 @@ void setup() {
 
 // The loop function is called in an endless loop
 void loop() {
+
 	currentTime = millis();
 	if(sysState == SYS_WAIT){
 		sysCheck();
@@ -91,14 +129,21 @@ void loop() {
 		sensorRead();
 		ledSwitch();
 
+		//Feature Set D
+		pirSensorRead();
+
+		//String Creator
+		finalStringOut();
+
+
+		//Feature Set E
+		localStringStorage();
+
+
+
 		//Feature SET C
+		debugStringOut();
 
-
-//		if(digitalRead(SWITCH_PIN) == LOW){
-//			Serial.println("PIR LOW");
-//		}else if(digitalRead(SWITCH_PIN) == HIGH){
-//			Serial.println("PIR HIGH");
-//		}
 
 
 	}
@@ -134,28 +179,27 @@ void sysCheck(){
 
 	//if yes then return SYS_READY
 
-	delay(3000);
+	delay(4000);
 	Serial.println("Simulating Delay - Remove This");
 	sysState = SYS_READY;
+	Serial.print("FIRST: ");
+	debugStringOut();
 }
 
 
 void sensorRead(){
 
 // read the value of the sensors and set them to variables
-	//delay(2000);
-	if(( millis() - oldTime ) > 2000){
+	if(( millis() - dhtTimer ) >= 2000){
 		TempAndHumidity newValues = dht.getTempAndHumidity();
 		humid = newValues.humidity;
 		temp = newValues.temperature;
-		oldTime = millis();
-		Serial.println(oldTime);
-		Serial.println( millis());
+		dhtTimer = millis();
 		if (isnan(humid) || isnan(temp)){
 			    Serial.println(F("Failed to read from DHTesp sensor!"));
 			    return;
 			  }
-		sensorValOut();
+		//sensorValOut();
 	}
 
 
@@ -184,8 +228,7 @@ void ledSwitch(){
 		ledCurrentState = LED_RED;
 	}
 
-	//int lastTemp = testTemp;
-	//int lastHum = testHum;
+
 
 	ledcWrite(1, R);
 	ledcWrite(2, G);
@@ -193,12 +236,63 @@ void ledSwitch(){
 }
 
 
-void sensorValOut(){
-//Print the value of the sensors as a string;
-	Serial.print("Temp: ");
-	Serial.print(temp);
-	Serial.print("  Humid: ");
-	Serial.println(humid);
+//void sensorValOut(){
+////Print the value of the sensors as a string;
+//	Serial.print("Temp: ");
+//	Serial.print(temp);
+//	Serial.print("  Humid: ");
+//	Serial.println(humid);
+//}
+
+
+
+void pirSensorRead(){
+
+	if((millis() - pirTimer) >= 1000){
+			if(digitalRead(PIR_PIN) == HIGH){
+//				pirCount++;
+//				Serial.print("Seconds: ");
+//				Serial.println(pirCount);
+				occupiedStatus = ROOM_OCCUPIED;
+				pirLongTimer = millis();
+			}else if(digitalRead(PIR_PIN == LOW) && occupiedStatus != ROOM_VACANT){
+				if((millis() - pirLongTimer )>60000){
+					occupiedStatus = ROOM_VACANT;
+					Serial.println("Room VACANT");
+				}
+
+
+			}
+			pirTimer = millis();
+		}
+
 }
 
+void localStringStorage(){
 
+}
+
+void finalStringOut(){
+
+	/* Humidity
+	 * Temp
+	 * LED state
+	 * PIR state
+	 * Output interval
+	 * Alert status + snooze
+	 *
+	 * */
+	stringOut = "Humidity: " + String(humid) + " Temperature: " + String(temp);
+	stringOut += "/n LED state: " + String(ledCurrentState);
+	stringOut += "/n PIR state: " + String(occupiedStatus);
+
+}
+
+void debugStringOut(){
+	if((millis() - stringTimer) >= 5000){
+
+		Serial.println(stringOut);
+		preferences.putString("mainOut", stringOut);
+		stringTimer = millis();
+	}
+}
