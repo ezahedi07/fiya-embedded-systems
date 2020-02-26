@@ -1,6 +1,8 @@
 #include "Button.h"
 #include "dhtesp.h"
 #include <Preferences.h>
+//#include "SD.h"
+
 #define DHTPIN 27
 #define DHTTYPE DHTesp::DHT11
 
@@ -17,6 +19,10 @@ enum occupiedState {
 	ROOM_OCCUPIED, ROOM_VACANT
 };
 
+enum intervalTime {
+	T_5, T_10, T_30, T_60, T_2M, T_5M
+};
+
 ButtonState btnCurrent;
 
 //Pin numbers
@@ -25,17 +31,18 @@ const int POTIN_PIN = 12; // CHANGED THIS
 const int PIR_PIN = 14;
 
 //Global counters
-int count = 0;
+int interval = 5000;
 int potCount = 0;
 int pirCount = 0;
 
 //Set button
-Button* button = NULL;
+Button *button = NULL;
 
 //set various system states
 ledState ledCurrentState;
 systemState sysState = SYS_WAIT;
 occupiedState occupiedStatus = ROOM_VACANT;
+intervalTime intervalTimer = T_5;
 
 //LED Settings
 int rgbLedArray[3] = { 1, 2, 3 };
@@ -43,7 +50,7 @@ const int ledR = 26, ledG = 33, ledB = 25;
 int R, G, B;
 
 //global timer - poor method, look for other implimentations
-long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer;
+long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer, volatylerTimer, remoteTimer, btnTimer;
 
 //DHT11 SENSOR Vars
 float humid;
@@ -89,7 +96,7 @@ void setup() {
 	}
 
 	//PIR interrupt
-	attachInterrupt(digitalPinToInterrupt(PIR_PIN), printOut, RISING);
+	//attachInterrupt(digitalPinToInterrupt(PIR_PIN), printOut, RISING);
 
 	//Begin Serial listener
 	Serial.begin(115200);
@@ -99,38 +106,36 @@ void setup() {
 	pirTimer = 0;
 	pirLongTimer = 0;
 	stringTimer = -5100;
+	volatylerTimer = 0;
+	remoteTimer = 0;
+
 
 	//preference setter
 	preferences.begin("localData", false);
 	stringOut = preferences.getString("mainOut", "Empty");
-
+	sysCheck();
 }
 
 // The loop function is called in an endless loop
 void loop() {
 
 	currentTime = millis();
-	if (sysState == SYS_WAIT) {
-		sysCheck();
-	} else if (sysState == SYS_READY) {
 
-		//Feature SET B
-		sensorRead();
-		ledSwitch();
+	//Feature SET B
+	sensorRead();
+	ledSwitch();
 
-		//Feature Set D
-		pirSensorRead();
+	//Feature Set D
+	pirSensorRead();
 
-		//String Creator
-		finalStringOut();
+	//String Creator
+	finalStringOut();
 
-		//Feature Set E
-		localStringStorage();
+	//Feature Set E
+	localStringStorage();
 
-		//Feature SET C
-		debugStringOut();
-
-	}
+	//Feature SET C, E, F
+	dataOut();
 
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
@@ -138,35 +143,103 @@ void loop() {
 		btnCurrent = btnRead;
 		switch (btnCurrent) {
 		case ButtonState::ON:
-			count++;
-			Serial.print("Btn Count (");
-			Serial.print(count);
-			Serial.print(")");
-			Serial.print(" Pot Val (");
-			Serial.print(potCount);
-			Serial.println(")");
+			btnTimer = millis();
 			break;
 		case ButtonState::OFF:
+			buttonTimeCheck();
 			break;
 		}
 	}
-	if (count == 3) {
-		count = 0;
+
+}
+
+void buttonTimeCheck() {
+
+	if ((millis() - btnTimer) >= 1000) {
+		intervalSwitch();
+
+	} else {
+
+		//Snooze
+		snooze();
 	}
+
+}
+
+void intervalSwitch() {
+	switch (intervalTimer) {
+	case 0:
+		interval = 5000;
+		intervalTimer = T_10;
+		break;
+	case 1:
+		interval = 10000;
+		intervalTimer = T_30;
+		break;
+	case 2:
+		interval = 30000;
+		intervalTimer = T_60;
+		break;
+	case 3:
+		interval = 60000;
+		intervalTimer = T_2M;
+		break;
+	case 4:
+		interval = 120000;
+		intervalTimer = T_5M;
+		break;
+	case 5:
+		interval = 300000;
+		intervalTimer = T_5;
+		break;
+	}
+	//Serial.print(intervalTimer);
+}
+
+void snooze() {
+	//Serial.print("SMOL TIME BBE");
 }
 
 //Feature A - CHECK SYS STATE
 void sysCheck() {
-	//Check if the connected components are running and connected
-	//if No then wait an return SYS_WAIT;
+	long waitingTimer = millis();
+	bool dhtSens = false, pirSens = false, wifiCon = false, remoteCon = false;
+	Serial.println("System is getting Ready");
+	while (sysState == SYS_WAIT) {
+		//SENSOR CHECK
+		if (!isnan(humid) && !isnan(temp)) {
+			dhtSens = true;
+		}
 
-	//if yes then return SYS_READY
+		if (digitalRead(PIR_PIN) == HIGH) {
+			pirSens = true;
+		}
 
-	delay(4000);
-	Serial.println("Simulating Delay - Remove This");
-	sysState = SYS_READY;
-	Serial.print("FIRST: ");
-	debugStringOut();
+		//WIFI CHECK
+		wifiCon = true;
+
+		//REMOTE STORAGE
+		remoteCon = true;
+
+		if (dhtSens && pirSens && wifiCon && remoteCon) {
+			sysState = SYS_READY;
+		}
+
+		if ((millis() - waitingTimer) >= 2000) {
+			Serial.print(".");
+			waitingTimer = millis();
+		}
+
+	}
+	//Syt=t=stem is now ready
+	Serial.println(".");
+	Serial.println("System State has changed to SYS_READY");
+	Serial.println("SYSTEM BEGIN");
+	//Print out the locally stored value
+
+	Serial.print("Local Store: ");
+	dataOut();
+
 }
 
 void sensorRead() {
@@ -213,13 +286,6 @@ void ledSwitch() {
 	ledcWrite(3, B);
 }
 
-//void sensorValOut(){
-////Print the value of the sensors as a string;
-//	Serial.print("Temp: ");
-//	Serial.print(temp);
-//	Serial.print("  Humid: ");
-//	Serial.println(humid);
-//}
 
 void pirSensorRead() {
 
@@ -257,17 +323,37 @@ void finalStringOut() {
 	 * Alert status + snooze
 	 *
 	 * */
-	stringOut = "Humidity: " + String(humid) + " Temperature: " + String(temp);
+	stringOut = "Running Time: " + String(millis());
+	stringOut += " Humidity: " + String(humid) + " Temperature: "
+			+ String(temp);
 	stringOut += " LED state: " + String(ledCurrentState);
 	stringOut += " PIR state: " + String(occupiedStatus);
+	stringOut += " Interval Time: " + String(interval/1000) + "s";
 
 }
 
-void debugStringOut() {
-	if ((millis() - stringTimer) >= 5000) {
+void dataOut() {
+	long timerCheck = interval;
 
+	if(interval < 30000){
+		timerCheck = 30000;
+	}
+
+
+	//Printing the debug String
+	if ((millis() - stringTimer) >= 5000) {
 		Serial.println(stringOut);
-		preferences.putString("mainOut", stringOut);
 		stringTimer = millis();
 	}
+
+	//Setting volatile output
+	if ((millis() - volatylerTimer) >= interval) {
+			preferences.putString("mainOut", stringOut);
+			volatylerTimer = millis();
+		}
+
+	//Setting remote output
+	if ((millis() - remoteTimer) >= timerCheck) {
+			//
+			}
 }
