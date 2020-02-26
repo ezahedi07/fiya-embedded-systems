@@ -1,4 +1,11 @@
-# fiya-embedded-systems
-Embedded systems group coursework using ESP32 device.
+# Embedded Systems Team Null 
+#### Hardware used: ESP32
+#### IDE: Sloeber
 
-Look at me, I am de captian now
+### Current Functionality:
+- RGB LED pin set and outputted red, green amber values
+- Button debouncing
+- Potentiometer value being read
+
+
+> V0.01.
