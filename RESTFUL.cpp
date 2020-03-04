@@ -6,24 +6,20 @@
  */
 
 #include "RESTFUL.h"
+#include <Arduino.h>
 #include "WiFi.h"
 
-RESTFUL::RESTFUL() {
-	// TODO Auto-generated constructor stub
 
-}
 
-RESTFUL::~RESTFUL() {
-	// TODO Auto-generated destructor stub
-}
 
-void processRequest(const String& header) {
+
+void RESTFUL::processRequest(String& header) {
 	if (header.indexOf("GET /helloworld") != -1) {
 		Serial.println("Hello World!");
 	}
 }
 
-void handleClient(WiFiClient& client) {
+void RESTFUL::handleClient(WiFiClient client) {
 	Serial.println(client.remoteIP());
 	String header;
 	header.reserve(512);
@@ -53,7 +49,7 @@ void handleClient(WiFiClient& client) {
 	}
 }
 
-void sendHeaders(WiFiClient& client) {
+void RESTFUL::sendHeaders(WiFiClient& client) {
 	client.println("HTTP/1.1 200 OK");
 	client.println("Content-type: text/html");
 	client.println("Connection: close");
@@ -61,7 +57,7 @@ void sendHeaders(WiFiClient& client) {
 	client.println("<!DOCTYPE html>");
 }
 
-void sendHTML(WiFiClient& client) {
+void RESTFUL::sendHTML(WiFiClient& client) {
 	client.println("<html>");
 	client.println("<head><title>ESP Web Server</title></html>");
 	client.println("<body>");
@@ -73,3 +69,6 @@ void sendHTML(WiFiClient& client) {
 }
 
 
+void RESTFUL::TEST(){
+	Serial.println("TEST");
+}

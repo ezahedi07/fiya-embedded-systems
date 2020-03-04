@@ -2,6 +2,7 @@
 #include "dhtesp.h"
 #include <Preferences.h>
 #include <HTTPClient.h>
+#include "RESTFUL.h"
 
 //#include "SD.h"
 
@@ -33,8 +34,8 @@ const int POTIN_PIN = 12; // CHANGED THIS
 const int PIR_PIN = 14;
 
 //WiFi Pass and SSID
-const char* PASS = "rteclrya";
-const char* SSID = "Jamie";
+const char* PASS = "cjry3646";
+const char* SSID = "JcPhone";
 
 //Global counters
 int interval = 5000;
@@ -70,9 +71,9 @@ String stringOut;
 //Preference setup
 Preferences preferences;
 
-void printOut() {
-	Serial.println("PIR HIGH");
-}
+WiFiServer server;
+
+RESTFUL rest;
 
 void setup() {
 
@@ -102,8 +103,7 @@ void setup() {
 		ledcWrite(rgbLedArray[i], 0);
 	}
 
-	//PIR interrupt
-	//attachInterrupt(digitalPinToInterrupt(PIR_PIN), printOut, RISING);
+
 
 	//Begin Serial listener
 	Serial.begin(115200);
@@ -125,6 +125,7 @@ void setup() {
 	WiFi.begin(SSID, PASS);
 
 	sysCheck();
+	server.begin(1337);
 }
 
 // The loop function is called in an endless loop
@@ -147,6 +148,16 @@ void loop() {
 
 	//Feature SET C, E, F
 	dataOut();
+
+
+	WiFiClient client = server.available();
+		if (client) {
+			delay(100);
+			rest.handleClient(client);
+
+			client.stop();
+			Serial.println("--- Disconnected Client");
+		}
 
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
@@ -391,22 +402,22 @@ void dataOut() {
 }
 
 
-void sendHeaders(WiFiClient& client) {
-	client.println("HTTP/1.1 200 OK");
-	client.println("Content-type: text/html");
-	client.println("Connection: close");
-	client.println();
-	client.println("<!DOCTYPE html>");
-}
-
-void sendHTML(WiFiClient& client) {
-	client.println("<html>");
-	client.println("<head><title>ESP Web Server</title></html>");
-	client.println("<body>");
-	client.println("<h1>Welcome to the ESP server!</h1>");
-	client.print("<p> hasib is late </p> ");
-	client.println("</body>");
-	client.println("</html>");
-	client.println();
-}
+//void sendHeaders(WiFiClient& client) {
+//	client.println("HTTP/1.1 200 OK");
+//	client.println("Content-type: text/html");
+//	client.println("Connection: close");
+//	client.println();
+//	client.println("<!DOCTYPE html>");
+//}
+//
+//void sendHTML(WiFiClient& client) {
+//	client.println("<html>");
+//	client.println("<head><title>ESP Web Server</title></html>");
+//	client.println("<body>");
+//	client.println("<h1>Welcome to the ESP server!</h1>");
+//	client.print("<p> hasib is late </p> ");
+//	client.println("</body>");
+//	client.println("</html>");
+//	client.println();
+//}
 
