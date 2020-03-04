@@ -38,5 +38,8 @@ SUBDIRS := \
 core\core \
 core\core\libb64 \
 libraries\DHT_sensor_library_for_ESPx \
+libraries\HttpClient\src \
 libraries\Preferences\src \
+libraries\WiFi\src \
+libraries\WiFiClientSecure\src \
 

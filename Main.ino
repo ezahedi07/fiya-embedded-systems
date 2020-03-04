@@ -1,6 +1,8 @@
 #include "Button.h"
 #include "dhtesp.h"
 #include <Preferences.h>
+#include <HTTPClient.h>
+
 //#include "SD.h"
 
 #define DHTPIN 27
@@ -30,6 +32,10 @@ const int SWITCH_PIN = 13;
 const int POTIN_PIN = 12; // CHANGED THIS
 const int PIR_PIN = 14;
 
+//WiFi Pass and SSID
+const char* PASS = "rteclrya";
+const char* SSID = "Jamie";
+
 //Global counters
 int interval = 5000;
 int potCount = 0;
@@ -50,7 +56,8 @@ const int ledR = 26, ledG = 33, ledB = 25;
 int R, G, B;
 
 //global timer - poor method, look for other implimentations
-long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer, volatylerTimer, remoteTimer, btnTimer;
+long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer, volatylerTimer,
+		remoteTimer, btnTimer;
 
 //DHT11 SENSOR Vars
 float humid;
@@ -109,10 +116,14 @@ void setup() {
 	volatylerTimer = 0;
 	remoteTimer = 0;
 
-
 	//preference setter
 	preferences.begin("localData", false);
 	stringOut = preferences.getString("mainOut", "Empty");
+
+	Serial.print("Connecting to ");
+	Serial.println(SSID);
+	WiFi.begin(SSID, PASS);
+
 	sysCheck();
 }
 
@@ -193,7 +204,9 @@ void intervalSwitch() {
 		intervalTimer = T_5;
 		break;
 	}
-	//Serial.print(intervalTimer);
+	Serial.print("Debug Interval Timer switched to: ");
+	Serial.print(interval / 1000);
+	Serial.println("s");
 }
 
 void snooze() {
@@ -211,12 +224,24 @@ void sysCheck() {
 			dhtSens = true;
 		}
 
+		/*
+		 * Change this section
+		 * the system can begin running in a staggered form where components come online while other
+		 * components become ready.
+		 * We should also have the 60 second wait period for the PIR sensor before we deem it to be "on"
+		 * DHT functionality is currently fine
+		 * System can be started without wifi connection as long as it is announced to the user
+		 * Other test could be done on things such as buttons, although the use an need is questionable.
+		 */
+
 		if (digitalRead(PIR_PIN) == HIGH) {
 			pirSens = true;
 		}
 
+		while (WiFi.status() == WL_CONNECTED && wifiCon != true) {
+			wifiCon = true;
+		}
 		//WIFI CHECK
-		wifiCon = true;
 
 		//REMOTE STORAGE
 		remoteCon = true;
@@ -226,14 +251,23 @@ void sysCheck() {
 		}
 
 		if ((millis() - waitingTimer) >= 2000) {
-			Serial.print(".");
+			Serial.print(" DHT: ");
+			Serial.print(dhtSens);
+			Serial.print(" PIR: ");
+			Serial.print(pirSens);
+			Serial.print(" WiFi: ");
+			Serial.print(wifiCon);
+			Serial.print(" SD: ");
+			Serial.println(remoteCon);
 			waitingTimer = millis();
 		}
 
 	}
-	//Syt=t=stem is now ready
+	//System is now ready
 	Serial.println(".");
 	Serial.println("System State has changed to SYS_READY");
+	Serial.print("Connected as : ");
+	Serial.println(WiFi.localIP());
 	Serial.println("SYSTEM BEGIN");
 	//Print out the locally stored value
 
@@ -286,7 +320,6 @@ void ledSwitch() {
 	ledcWrite(3, B);
 }
 
-
 void pirSensorRead() {
 
 	if ((millis() - pirTimer) >= 1000) {
@@ -328,32 +361,52 @@ void finalStringOut() {
 			+ String(temp);
 	stringOut += " LED state: " + String(ledCurrentState);
 	stringOut += " PIR state: " + String(occupiedStatus);
-	stringOut += " Interval Time: " + String(interval/1000) + "s";
+	stringOut += " Interval Time: " + String(interval / 1000) + "s";
 
 }
 
 void dataOut() {
 	long timerCheck = interval;
 
-	if(interval < 30000){
+	if (interval < 30000) {
 		timerCheck = 30000;
 	}
 
-
 	//Printing the debug String
-	if ((millis() - stringTimer) >= 5000) {
+	if ((millis() - stringTimer) >= interval) {
 		Serial.println(stringOut);
 		stringTimer = millis();
 	}
 
 	//Setting volatile output
-	if ((millis() - volatylerTimer) >= interval) {
-			preferences.putString("mainOut", stringOut);
-			volatylerTimer = millis();
-		}
+	if ((millis() - volatylerTimer) >= 5000) {
+		preferences.putString("mainOut", stringOut);
+		volatylerTimer = millis();
+	}
 
 	//Setting remote output
 	if ((millis() - remoteTimer) >= timerCheck) {
-			//
-			}
+		//
+	}
 }
+
+
+void sendHeaders(WiFiClient& client) {
+	client.println("HTTP/1.1 200 OK");
+	client.println("Content-type: text/html");
+	client.println("Connection: close");
+	client.println();
+	client.println("<!DOCTYPE html>");
+}
+
+void sendHTML(WiFiClient& client) {
+	client.println("<html>");
+	client.println("<head><title>ESP Web Server</title></html>");
+	client.println("<body>");
+	client.println("<h1>Welcome to the ESP server!</h1>");
+	client.print("<p> hasib is late </p> ");
+	client.println("</body>");
+	client.println("</html>");
+	client.println();
+}
+

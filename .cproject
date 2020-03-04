@@ -19,31 +19,37 @@
 							<builder buildPath="${workspace_loc:/NULL___Embedded_Systems}/Release" id="io.sloeber.sketch.builder.892872272" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1771328601" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.1046786067" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/variant}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/Preferences/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/Preferences/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/HttpClient/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFi/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFiClientSecure/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1423050488" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.924429099" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.335363495" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/variant}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/Preferences/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/Preferences/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/HttpClient/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFi/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFiClientSecure/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1014284287" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.687050249" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1908740603" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/core/variant}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/Preferences/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NULL___Embedded_Systems/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/DHT_sensor_library_for_ESPx}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/Preferences/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/HttpClient/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFi/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fiya-embedded-systems/libraries/WiFiClientSecure/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1356491392" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
