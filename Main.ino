@@ -57,8 +57,8 @@ const int ledR = 26, ledG = 33, ledB = 25;
 int R, G, B;
 
 //global timer - poor method, look for other implimentations
-long currentTime, dhtTimer, pirTimer, pirLongTimer, stringTimer, volatylerTimer,
-		remoteTimer, btnTimer;
+long currentTime, dhtTimer, pirTimer, pirLongTimer, pirSysCheck, stringTimer, volatylerTimer,
+		remoteTimer, btnTimer, wifiRepeateTimer;
 
 //DHT11 SENSOR Vars
 float humid;
@@ -67,6 +67,10 @@ DHTesp dht;
 
 //Global string out
 String stringOut;
+
+//Global BOOL
+boolean pirReady = false;
+boolean wifiReady = false;
 
 //Preference setup
 Preferences preferences;
@@ -115,6 +119,7 @@ void setup() {
 	stringTimer = -5100;
 	volatylerTimer = 0;
 	remoteTimer = 0;
+	pirSysCheck = 0;
 
 	//preference setter
 	preferences.begin("localData", false);
@@ -149,15 +154,19 @@ void loop() {
 	//Feature SET C, E, F
 	dataOut();
 
+	//WifiCheck
 
-	WiFiClient client = server.available();
-		if (client) {
-			delay(100);
-			rest.handleClient(client);
+	wifiReadyCheck();
 
-			client.stop();
-			Serial.println("--- Disconnected Client");
-		}
+
+	//wifi Server Check -- Probably change or remove this
+	wifiServerCheck();
+
+
+
+
+
+
 
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
@@ -173,6 +182,35 @@ void loop() {
 		}
 	}
 
+}
+
+void wifiReadyCheck(){
+	if(wifiReady == false){
+	if((millis() - wifiRepeateTimer) >= 5000){
+		if(WiFi.status() == WL_CONNECTED){
+				wifiReady = true;
+				Serial.print("Connected as : ");
+				Serial.println(WiFi.localIP());
+			}else{
+				Serial.print("Not Connected");
+				//WiFi.begin(SSID, PASS);
+				WiFi.reconnect();
+			}
+		wifiRepeateTimer = millis();
+	}
+	}else if (WiFi.status() == WL_DISCONNECTED ){
+		wifiReady = false;
+	}
+}
+
+void wifiServerCheck(){
+	WiFiClient client = server.available();
+			if (client) {
+				delay(100);
+				rest.handleClient(client);
+				client.stop();
+				Serial.println("--- Disconnected Client");
+			}
 }
 
 void buttonTimeCheck() {
@@ -227,7 +265,7 @@ void snooze() {
 //Feature A - CHECK SYS STATE
 void sysCheck() {
 	long waitingTimer = millis();
-	bool dhtSens = false, pirSens = false, wifiCon = false, remoteCon = false;
+	bool dhtSens = false, wifiEscape = false, remoteCon = false;
 	Serial.println("System is getting Ready");
 	while (sysState == SYS_WAIT) {
 		//SENSOR CHECK
@@ -245,29 +283,32 @@ void sysCheck() {
 		 * Other test could be done on things such as buttons, although the use an need is questionable.
 		 */
 
-		if (digitalRead(PIR_PIN) == HIGH) {
-			pirSens = true;
+		//Start the 60 seconds PIR timer
+		pirSysCheck = millis();
+
+
+		//True if wifi is connected else true with a new timer
+		if (WiFi.status() == WL_CONNECTED && wifiEscape != true) {
+			wifiEscape= true;
+		}else{
+			wifiRepeateTimer = millis();
+			wifiEscape= true;
+			Serial.println("The system will run without wifi." );
 		}
 
-		while (WiFi.status() == WL_CONNECTED && wifiCon != true) {
-			wifiCon = true;
-		}
-		//WIFI CHECK
 
 		//REMOTE STORAGE
 		remoteCon = true;
 
-		if (dhtSens && pirSens && wifiCon && remoteCon) {
+		if (dhtSens  && wifiEscape && remoteCon) {
 			sysState = SYS_READY;
 		}
 
 		if ((millis() - waitingTimer) >= 2000) {
 			Serial.print(" DHT: ");
 			Serial.print(dhtSens);
-			Serial.print(" PIR: ");
-			Serial.print(pirSens);
 			Serial.print(" WiFi: ");
-			Serial.print(wifiCon);
+			Serial.print(wifiEscape);
 			Serial.print(" SD: ");
 			Serial.println(remoteCon);
 			waitingTimer = millis();
@@ -277,8 +318,12 @@ void sysCheck() {
 	//System is now ready
 	Serial.println(".");
 	Serial.println("System State has changed to SYS_READY");
-	Serial.print("Connected as : ");
-	Serial.println(WiFi.localIP());
+
+	if(wifiReady == true){
+		Serial.print("Connected as : ");
+		Serial.println(WiFi.localIP());
+	}
+
 	Serial.println("SYSTEM BEGIN");
 	//Print out the locally stored value
 
@@ -299,7 +344,6 @@ void sensorRead() {
 			Serial.println(F("Failed to read from DHTesp sensor!"));
 			return;
 		}
-		//sensorValOut();
 	}
 
 }
@@ -333,11 +377,10 @@ void ledSwitch() {
 
 void pirSensorRead() {
 
+
+	if(pirReady == true){
 	if ((millis() - pirTimer) >= 1000) {
 		if (digitalRead(PIR_PIN) == HIGH) {
-//				pirCount++;
-//				Serial.print("Seconds: ");
-//				Serial.println(pirCount);
 			occupiedStatus = ROOM_OCCUPIED;
 			pirLongTimer = millis();
 		} else if (digitalRead(PIR_PIN == LOW)
@@ -350,7 +393,11 @@ void pirSensorRead() {
 		}
 		pirTimer = millis();
 	}
-
+	}else{
+		if((millis() - pirSysCheck) >= 60000){
+			pirReady = true;
+		}
+	}
 }
 
 void localStringStorage() {
@@ -371,9 +418,16 @@ void finalStringOut() {
 	stringOut += " Humidity: " + String(humid) + " Temperature: "
 			+ String(temp);
 	stringOut += " LED state: " + String(ledCurrentState);
-	stringOut += " PIR state: " + String(occupiedStatus);
+	if(pirReady == false){
+		stringOut += " PIR state: Warming";
+	}else{
+		stringOut += " PIR state: " + String(occupiedStatus);
+	}
 	stringOut += " Interval Time: " + String(interval / 1000) + "s";
 
+	if(wifiReady == false){
+		stringOut += " WiFi is currently not connected";
+	}
 }
 
 void dataOut() {
@@ -402,22 +456,5 @@ void dataOut() {
 }
 
 
-//void sendHeaders(WiFiClient& client) {
-//	client.println("HTTP/1.1 200 OK");
-//	client.println("Content-type: text/html");
-//	client.println("Connection: close");
-//	client.println();
-//	client.println("<!DOCTYPE html>");
-//}
-//
-//void sendHTML(WiFiClient& client) {
-//	client.println("<html>");
-//	client.println("<head><title>ESP Web Server</title></html>");
-//	client.println("<body>");
-//	client.println("<h1>Welcome to the ESP server!</h1>");
-//	client.print("<p> hasib is late </p> ");
-//	client.println("</body>");
-//	client.println("</html>");
-//	client.println();
-//}
+
 
