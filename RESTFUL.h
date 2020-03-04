@@ -16,8 +16,7 @@ public:
 	void handleClient(WiFiClient client);
 	void sendHeaders(WiFiClient& client);
 	void sendHTML(WiFiClient& client);
-	void TEST();
-
+	void GET(WiFiClient client, String stringOut);
 };
 
 #endif /* RESTFUL_H_ */

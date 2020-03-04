@@ -68,7 +68,48 @@ void RESTFUL::sendHTML(WiFiClient& client) {
 	client.println();
 }
 
+void RESTFUL::GET(WiFiClient client, String stringOut) {
+	const char* HOST = "team-null.atwebpages.com";
+	String id = "&x=";
+	String val = stringOut;
+	String url = "/serialToServer.php?file=serialOut";
 
-void RESTFUL::TEST(){
-	Serial.println("TEST");
+	url.concat(id);
+	url.concat(val);
+
+
+
+
+	if (!client.connect(HOST, 80)) {
+		Serial.println("connection failed");
+		return;
+	}
+
+	Serial.print("GET ");
+	Serial.print(HOST);
+	Serial.println(url);
+
+	client.print("GET ");
+	client.print(url);
+	client.println(" HTTP/1.1");
+	client.print("Host: ");
+	client.println(HOST);
+	client.println();
+
+	const int TIMEOUT = 10000;
+
+		long timing = millis();
+		while (client.available() == 0) {
+			// wait for response
+			if (millis() - timing > TIMEOUT) {
+				Serial.println("Timed out waiting for client");
+				client.stop();
+				break;
+			}
+		}
+
+		if(client.connected() == true)
+		client.stop();
+
 }
+

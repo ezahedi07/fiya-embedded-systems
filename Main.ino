@@ -451,7 +451,11 @@ void dataOut() {
 
 	//Setting remote output
 	if ((millis() - remoteTimer) >= timerCheck) {
-		//
+
+		WiFiClient client;
+		rest.GET(client, stringOut);
+
+		remoteTimer = millis();
 	}
 }
 
