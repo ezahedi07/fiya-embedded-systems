@@ -47,6 +47,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/DHT_sensor_library_for_ESPx/1.17.0</locationURI>
 		</link>
 		<link>
+			<name>libraries/FS</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/libraries/FS</locationURI>
+		</link>
+		<link>
 			<name>libraries/HTTPClient</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/libraries/HTTPClient</locationURI>
@@ -55,6 +60,16 @@
 			<name>libraries/Preferences</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/libraries/Preferences</locationURI>
+		</link>
+		<link>
+			<name>libraries/SD</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/libraries/SD</locationURI>
+		</link>
+		<link>
+			<name>libraries/SPI</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp32/hardware/esp32/1.0.1/libraries/SPI</locationURI>
 		</link>
 		<link>
 			<name>libraries/WiFi</name>

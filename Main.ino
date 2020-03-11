@@ -3,15 +3,16 @@
 #include <Preferences.h>
 #include <HTTPClient.h>
 #include "RESTFUL.h"
-
-//#include "SD.h"
+#include <SD.h>
+#include <SPI.h>
+#include <FS.h>
+#include "time.h"
 
 #define DHTPIN 27
 #define DHTTYPE DHTesp::DHT11
 
 enum ledState {
 	LED_GREEN, LED_AMBER, LED_RED
-
 };
 
 enum systemState {
@@ -32,13 +33,20 @@ ButtonState btnCurrent;
 const int SWITCH_PIN = 13;
 const int POTIN_PIN = 12; // CHANGED THIS
 const int PIR_PIN = 14;
+const int CS_PIN = 5;
 
 //WiFi Pass and SSID
 const char* PASS = "cjry3646";
 const char* SSID = "JcPhone";
 
+//NTP Server
+const char* ntpServer = "pool.ntp.org";
+const long gmtOffset_sec = 0; // UTC:00 Offset (London Timezone)
+const int daylightOffset_sec = 3600; // Daylight savings time
+
 //Global counters
 int interval = 5000;
+int sdCount = 0;
 int potCount = 0;
 int pirCount = 0;
 
@@ -79,7 +87,16 @@ WiFiServer server;
 
 RESTFUL rest;
 
+//SD Setup
+File file;
+String fileName = "/readings.txt";
+String readingsArray[24];
+int arrayIndex;
+
 void setup() {
+
+	//Initialize SD Card
+	SD.begin(CS_PIN);
 
 	//Connect DHT library to the DHT pin
 	dht.setup(DHTPIN, DHTesp::DHT11);
@@ -107,8 +124,6 @@ void setup() {
 		ledcWrite(rgbLedArray[i], 0);
 	}
 
-
-
 	//Begin Serial listener
 	Serial.begin(115200);
 
@@ -121,9 +136,9 @@ void setup() {
 	remoteTimer = 0;
 	pirSysCheck = 0;
 
-	//preference setter
-	preferences.begin("localData", false);
-	stringOut = preferences.getString("mainOut", "Empty");
+//	//preference setter
+//	preferences.begin("localData", false);
+//	stringOut = preferences.getString("mainOut", "Empty");
 
 	Serial.print("Connecting to ");
 	Serial.println(SSID);
@@ -137,6 +152,12 @@ void setup() {
 void loop() {
 
 	currentTime = millis();
+
+	//WifiCheck
+	wifiReadyCheck();
+
+	//wifi Server Check -- Probably change or remove this
+	wifiServerCheck();
 
 	//Feature SET B
 	sensorRead();
@@ -153,20 +174,6 @@ void loop() {
 
 	//Feature SET C, E, F
 	dataOut();
-
-	//WifiCheck
-
-	wifiReadyCheck();
-
-
-	//wifi Server Check -- Probably change or remove this
-	wifiServerCheck();
-
-
-
-
-
-
 
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
@@ -191,6 +198,10 @@ void wifiReadyCheck(){
 				wifiReady = true;
 				Serial.print("Connected as : ");
 				Serial.println(WiFi.localIP());
+
+				//Initialize local epoch/time
+				configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+
 			}else{
 				Serial.print("Not Connected");
 				//WiFi.begin(SSID, PASS);
@@ -326,9 +337,9 @@ void sysCheck() {
 
 	Serial.println("SYSTEM BEGIN");
 	//Print out the locally stored value
-
-	Serial.print("Local Store: ");
-	dataOut();
+//
+//	Serial.print("Local Store: ");
+//	dataOut();
 
 }
 
@@ -405,7 +416,6 @@ void localStringStorage() {
 }
 
 void finalStringOut() {
-
 	/* Humidity
 	 * Temp
 	 * LED state
@@ -414,7 +424,9 @@ void finalStringOut() {
 	 * Alert status + snooze
 	 *
 	 * */
-	stringOut = "Running Time: " + String(millis());
+
+	stringOut = "Running Time: " + String(millis()) + "ms ";
+	stringOut += "Local Time: " + returnLocalTime();
 	stringOut += " Humidity: " + String(humid) + " Temperature: "
 			+ String(temp);
 	stringOut += " LED state: " + String(ledCurrentState);
@@ -441,12 +453,15 @@ void dataOut() {
 	if ((millis() - stringTimer) >= interval) {
 		Serial.println(stringOut);
 		stringTimer = millis();
+
 	}
 
 	//Setting volatile output
-	if ((millis() - volatylerTimer) >= 5000) {
-		preferences.putString("mainOut", stringOut);
+	if ((millis() - volatylerTimer) >= interval) {
+//		preferences.putString("mainOut", stringOut);
+		readingsArray[arrayIndex] = stringOut;
 		volatylerTimer = millis();
+		arrayIndex++;
 	}
 
 	//Setting remote output
@@ -457,8 +472,40 @@ void dataOut() {
 
 		remoteTimer = millis();
 	}
+
+	if((millis() - sdCount) >= 30000){
+		file = SD.open("/readings.txt", FILE_APPEND);
+		Serial.println("Data to SD");
+		for(String reading : readingsArray){
+			if(file.println(reading)) {
+			    Serial.println("Message appended");
+			  } else {
+			    Serial.println("Append failed");
+			  }
+		}
+		file.close();
+		arrayIndex = 0;
+
+		for(int i = 0; i <= 24; i++){
+			readingsArray[i] = "";
+		}
+
+		sdCount = millis();
+	}
 }
 
+String returnLocalTime() {
+	struct tm timeinfo;
+	if(!getLocalTime(&timeinfo)){
+		return "Failed to obtain time";
+	}
 
+	char timeStringBuff[50]; //50 chars should be enough
 
+	strftime(timeStringBuff, sizeof(timeStringBuff), "%B %d %Y %H:%M:%S", &timeinfo);
 
+	//Construct String object
+	String asString(timeStringBuff);
+
+	return asString;
+}
