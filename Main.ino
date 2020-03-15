@@ -27,6 +27,14 @@ enum intervalTime {
 	T_5, T_10, T_30, T_60, T_2M, T_5M
 };
 
+enum sdState {
+	SD_IN, SD_OUT
+};
+
+enum fileState {
+	FILE_MISSING, FILE_CREATED
+};
+
 ButtonState btnCurrent;
 
 //Pin numbers
@@ -97,6 +105,14 @@ void setup() {
 
 	//Initialize SD Card
 	SD.begin(CS_PIN);
+
+	// Initialize SD File
+	File initFile = SD.open("/readings.txt");
+	if(!initFile) {
+		// File doesn't exist
+		// Creating file
+		createFile("/readings.txt");
+	}
 
 	//Connect DHT library to the DHT pin
 	dht.setup(DHTPIN, DHTesp::DHT11);
@@ -477,11 +493,14 @@ void dataOut() {
 		file = SD.open("/readings.txt", FILE_APPEND);
 		Serial.println("Data to SD");
 		for(String reading : readingsArray){
-			if(file.println(reading)) {
-			    Serial.println("Message appended");
+			if(!reading.equals("")){
+				if(file.println(reading)) {
+			  //It worked
 			  } else {
 			    Serial.println("Append failed");
 			  }
+			}
+
 		}
 		file.close();
 		arrayIndex = 0;
@@ -489,6 +508,7 @@ void dataOut() {
 		for(int i = 0; i <= 24; i++){
 			readingsArray[i] = "";
 		}
+		 Serial.println(ESP.getFreeHeap());
 
 		sdCount = millis();
 	}
@@ -508,4 +528,22 @@ String returnLocalTime() {
 	String asString(timeStringBuff);
 
 	return asString;
+}
+
+// https://randomnerdtutorials.com/esp32-data-logging-temperature-to-microsd-card/
+void createFile(String dir){
+	File file = SD.open(dir, FILE_WRITE);
+
+	if(!file){
+		Serial.println("File can't be written.");
+		return;
+	}
+
+	if(file.print("")){
+		Serial.println("Write Succeeded!.");
+	} else {
+		Serial.println("Write Failed.");
+	}
+
+	file.close();
 }

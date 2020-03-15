@@ -39,7 +39,7 @@ core\core \
 core\core\libb64 \
 libraries\DHT_sensor_library_for_ESPx \
 libraries\FS\src \
-libraries\HTTPClient\src \
+libraries\HttpClient\src \
 libraries\Preferences\src \
 libraries\SD\src \
 libraries\SPI\src \
