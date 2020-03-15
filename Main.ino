@@ -12,7 +12,7 @@
 #define DHTTYPE DHTesp::DHT11
 
 enum ledState {
-	LED_GREEN, LED_AMBER, LED_RED
+	LED_GREEN, LED_AMBER, LED_RED, LED_START
 };
 
 enum systemState {
@@ -20,11 +20,19 @@ enum systemState {
 };
 
 enum occupiedState {
-	ROOM_OCCUPIED, ROOM_VACANT
+	ROOM_OCCUPIED, ROOM_VACANT, ROOM_UNREADY
 };
 
 enum intervalTime {
 	T_5, T_10, T_30, T_60, T_2M, T_5M
+};
+
+enum sdState {
+	SD_IN, SD_OUT
+};
+
+enum fileState {
+	FILE_MISSING, FILE_CREATED
 };
 
 ButtonState btnCurrent;
@@ -36,11 +44,11 @@ const int PIR_PIN = 14;
 const int CS_PIN = 5;
 
 //WiFi Pass and SSID
-const char* PASS = "cjry3646";
-const char* SSID = "JcPhone";
+const char *PASS = "d24d92ac6b";
+const char *SSID = "PLUSNET-HZMT";
 
 //NTP Server
-const char* ntpServer = "pool.ntp.org";
+const char *ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 0; // UTC:00 Offset (London Timezone)
 const int daylightOffset_sec = 3600; // Daylight savings time
 
@@ -64,14 +72,25 @@ int rgbLedArray[3] = { 1, 2, 3 };
 const int ledR = 26, ledG = 33, ledB = 25;
 int R, G, B;
 
-//global timer - poor method, look for other implimentations
-long currentTime, dhtTimer, pirTimer, pirLongTimer, pirSysCheck, stringTimer, volatylerTimer,
-		remoteTimer, btnTimer, wifiRepeateTimer;
+//global timer - poor method, look for other implementations
+long currentTime, dhtTimer, pirTimer, pirLongTimer, pirSysCheck, stringTimer,
+		volatylerTimer, remoteTimer, btnTimer, wifiRepeateTimer,
+		buzzerAlertTimer, buzzerSoundTimer, snoozeTimer;
 
 //DHT11 SENSOR Vars
 float humid;
 float temp;
 DHTesp dht;
+
+//Buzzer setup
+int buzzerChannel = 0;
+int buzzerFRQ = 2000;
+int buzzerPin = 32;
+int buzzerInterval = 0;
+bool buzzerOn = false;
+bool buzzerEnabled = false;
+bool snoozeState = false;
+ledState ledBuzzerCompare = LED_START;
 
 //Global string out
 String stringOut;
@@ -83,12 +102,12 @@ boolean wifiReady = false;
 //Preference setup
 Preferences preferences;
 
-WiFiServer server;
+WiFiServer server; // @suppress("Abstract class cannot be instantiated")
 
 RESTFUL rest;
 
 //SD Setup
-File file;
+File file; // @suppress("Abstract class cannot be instantiated")
 String fileName = "/readings.txt";
 String readingsArray[24];
 int arrayIndex;
@@ -98,6 +117,14 @@ void setup() {
 	//Initialize SD Card
 	SD.begin(CS_PIN);
 
+	// Initialize SD File
+	File initFile = SD.open("/readings.txt"); // @suppress("Abstract class cannot be instantiated")
+	if (!initFile) {
+		// File doesn't exist
+		// Creating file
+		createFile("/readings.txt");
+	}
+
 	//Connect DHT library to the DHT pin
 	dht.setup(DHTPIN, DHTesp::DHT11);
 
@@ -105,11 +132,13 @@ void setup() {
 	ledcAttachPin(ledR, 1);
 	ledcAttachPin(ledG, 2);
 	ledcAttachPin(ledB, 3);
+	ledcAttachPin(buzzerPin, 0); //And Buzzer
 
 	//Attach the Channel with a 12khz PWM and 8-bit resolution
 	ledcSetup(1, 12000, 8);
 	ledcSetup(2, 12000, 8);
 	ledcSetup(3, 12000, 8);
+	ledcSetup(buzzerChannel, buzzerFRQ, 8); //And Buzzer at 2khz
 
 	//Attach the PIR sensor pin
 	pinMode(PIR_PIN, INPUT);
@@ -125,7 +154,7 @@ void setup() {
 	}
 
 	//Begin Serial listener
-	Serial.begin(115200);
+	Serial.begin(115200); // @suppress("Ambiguous problem")
 
 	//Initialise the timer variables
 	dhtTimer = 0;
@@ -135,7 +164,9 @@ void setup() {
 	volatylerTimer = 0;
 	remoteTimer = 0;
 	pirSysCheck = 0;
-
+	buzzerAlertTimer = 0;
+	buzzerSoundTimer = 0;
+	snoozeTimer = 0;
 //	//preference setter
 //	preferences.begin("localData", false);
 //	stringOut = preferences.getString("mainOut", "Empty");
@@ -175,6 +206,19 @@ void loop() {
 	//Feature SET C, E, F
 	dataOut();
 
+	//Feature Set G
+
+	if (occupiedStatus == ROOM_OCCUPIED) {
+		buzzerControl();
+		if (buzzerOn == true) {
+			buzzerSound();
+		}
+
+	} else {
+		ledcWrite(0, 0);
+		buzzerOn = false;
+	}
+
 	ButtonState btnRead = button->checkState();
 	potCount = analogRead(POTIN_PIN);
 	if (btnRead != btnCurrent) {
@@ -191,10 +235,10 @@ void loop() {
 
 }
 
-void wifiReadyCheck(){
-	if(wifiReady == false){
-	if((millis() - wifiRepeateTimer) >= 5000){
-		if(WiFi.status() == WL_CONNECTED){
+void wifiReadyCheck() {
+	if (wifiReady == false) {
+		if ((millis() - wifiRepeateTimer) >= 5000) {
+			if (WiFi.status() == WL_CONNECTED) {
 				wifiReady = true;
 				Serial.print("Connected as : ");
 				Serial.println(WiFi.localIP());
@@ -202,39 +246,35 @@ void wifiReadyCheck(){
 				//Initialize local epoch/time
 				configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
 
-			}else{
+			} else {
 				Serial.print("Not Connected");
 				//WiFi.begin(SSID, PASS);
 				WiFi.reconnect();
 			}
-		wifiRepeateTimer = millis();
-	}
-	}else if (WiFi.status() == WL_DISCONNECTED ){
+			wifiRepeateTimer = millis();
+		}
+	} else if (WiFi.status() == WL_DISCONNECTED) {
 		wifiReady = false;
 	}
 }
 
-void wifiServerCheck(){
-	WiFiClient client = server.available();
-			if (client) {
-				delay(100);
-				rest.handleClient(client);
-				client.stop();
-				Serial.println("--- Disconnected Client");
-			}
+void wifiServerCheck() {
+	WiFiClient client = server.available(); // @suppress("Abstract class cannot be instantiated")
+	if (client) {
+		delay(100);
+		rest.handleClient(client);
+		client.stop();
+		Serial.println("--- Disconnected Client");
+	}
 }
 
 void buttonTimeCheck() {
-
 	if ((millis() - btnTimer) >= 1000) {
 		intervalSwitch();
-
 	} else {
-
 		//Snooze
 		snooze();
 	}
-
 }
 
 void intervalSwitch() {
@@ -270,7 +310,66 @@ void intervalSwitch() {
 }
 
 void snooze() {
-	//Serial.print("SMOL TIME BBE");
+	if (snoozeState == false) {
+		Serial.println("Snoozing Current Alert");
+		snoozeState = true;
+		snoozeTimer = millis();
+	} else {
+		Serial.println("Alert Already Snoozed");
+	}
+
+}
+
+void buzzerControl() {
+
+	if (ledCurrentState == LED_GREEN && ledBuzzerCompare != ledCurrentState) {
+		buzzerEnabled = false;
+		buzzerAlertTimer = millis();
+		Serial.println("Changed 1");
+		ledBuzzerCompare = ledCurrentState;
+		snoozeState = false;
+	} else if (ledCurrentState == LED_AMBER
+			&& ledBuzzerCompare != ledCurrentState) {
+		buzzerEnabled = true;
+		buzzerInterval = 30000;
+		buzzerAlertTimer = millis();
+		Serial.println("Changed 2");
+		ledBuzzerCompare = ledCurrentState;
+		snoozeState = false;
+	} else if (ledCurrentState == LED_RED
+			&& ledBuzzerCompare != ledCurrentState) {
+		buzzerEnabled = true;
+		buzzerInterval = 5000;
+		buzzerAlertTimer = millis();
+		Serial.println("Changed 3");
+		ledBuzzerCompare = ledCurrentState;
+		snoozeState = false;
+	}
+
+
+
+
+
+	if (snoozeState == true && ((millis() - snoozeTimer) >= 120000)) {
+		Serial.println("Snooze over");
+		snoozeState = false;
+	}else if (snoozeState == false){
+		if ((millis() - buzzerAlertTimer) >= buzzerInterval
+					&& buzzerEnabled == true) {
+				buzzerOn = true;
+				ledcWrite(0, 125);
+				buzzerSoundTimer = millis();
+				buzzerAlertTimer = millis();
+
+			}
+	}
+}
+
+void buzzerSound() {
+	if ((millis() - buzzerSoundTimer) >= 1000) {
+		ledcWrite(0, 0);
+		buzzerOn = false;
+	}
 }
 
 //Feature A - CHECK SYS STATE
@@ -284,34 +383,22 @@ void sysCheck() {
 			dhtSens = true;
 		}
 
-		/*
-		 * Change this section
-		 * the system can begin running in a staggered form where components come online while other
-		 * components become ready.
-		 * We should also have the 60 second wait period for the PIR sensor before we deem it to be "on"
-		 * DHT functionality is currently fine
-		 * System can be started without wifi connection as long as it is announced to the user
-		 * Other test could be done on things such as buttons, although the use an need is questionable.
-		 */
-
 		//Start the 60 seconds PIR timer
 		pirSysCheck = millis();
 
-
 		//True if wifi is connected else true with a new timer
 		if (WiFi.status() == WL_CONNECTED && wifiEscape != true) {
-			wifiEscape= true;
-		}else{
+			wifiEscape = true;
+		} else {
 			wifiRepeateTimer = millis();
-			wifiEscape= true;
-			Serial.println("The system will run without wifi." );
+			wifiEscape = true;
+			Serial.println("The system will run without wifi.");
 		}
-
 
 		//REMOTE STORAGE
 		remoteCon = true;
 
-		if (dhtSens  && wifiEscape && remoteCon) {
+		if (dhtSens && wifiEscape && remoteCon) {
 			sysState = SYS_READY;
 		}
 
@@ -327,10 +414,9 @@ void sysCheck() {
 
 	}
 	//System is now ready
-	Serial.println(".");
 	Serial.println("System State has changed to SYS_READY");
 
-	if(wifiReady == true){
+	if (wifiReady == true) {
 		Serial.print("Connected as : ");
 		Serial.println(WiFi.localIP());
 	}
@@ -388,26 +474,25 @@ void ledSwitch() {
 
 void pirSensorRead() {
 
+	if (pirReady == true) {
+		if ((millis() - pirTimer) >= 1000) {
+			if (digitalRead(PIR_PIN) == HIGH) {
+				occupiedStatus = ROOM_OCCUPIED;
+				pirLongTimer = millis();
+			} else if (digitalRead(PIR_PIN == LOW)
+					&& occupiedStatus != ROOM_VACANT) {
+				if ((millis() - pirLongTimer) > 60000) {
+					occupiedStatus = ROOM_VACANT;
+					Serial.println("Room VACANT");
 
-	if(pirReady == true){
-	if ((millis() - pirTimer) >= 1000) {
-		if (digitalRead(PIR_PIN) == HIGH) {
-			occupiedStatus = ROOM_OCCUPIED;
-			pirLongTimer = millis();
-		} else if (digitalRead(PIR_PIN == LOW)
-				&& occupiedStatus != ROOM_VACANT) {
-			if ((millis() - pirLongTimer) > 60000) {
-				occupiedStatus = ROOM_VACANT;
-				Serial.println("Room VACANT");
+				}
+
 			}
-
+			pirTimer = millis();
 		}
-		pirTimer = millis();
-	}
-	}else{
-		if((millis() - pirSysCheck) >= 60000){
-			pirReady = true;
-		}
+	} else if ((millis() - pirSysCheck) >= 10000) {
+		pirReady = true;
+		occupiedStatus = ROOM_UNREADY;
 	}
 }
 
@@ -430,15 +515,22 @@ void finalStringOut() {
 	stringOut += " Humidity: " + String(humid) + " Temperature: "
 			+ String(temp);
 	stringOut += " LED state: " + String(ledCurrentState);
-	if(pirReady == false){
+	if (pirReady == false) {
 		stringOut += " PIR state: Warming";
-	}else{
+	} else {
 		stringOut += " PIR state: " + String(occupiedStatus);
 	}
 	stringOut += " Interval Time: " + String(interval / 1000) + "s";
+	if (buzzerInterval == 0) {
+		stringOut += " Buzzer Interval: Not Active";
+	} else if (snoozeState == true) {
+		stringOut += " Buzzer Interval: Snoozing";
+	} else {
+		stringOut += " Buzzer Interval: " + String(buzzerInterval / 1000) + "s";
+	}
 
-	if(wifiReady == false){
-		stringOut += " WiFi is currently not connected";
+	if (wifiReady == false) {
+		stringOut += "   (WiFi is currently not connected)";
 	}
 }
 
@@ -467,45 +559,65 @@ void dataOut() {
 	//Setting remote output
 	if ((millis() - remoteTimer) >= timerCheck) {
 
-		WiFiClient client;
+		WiFiClient client; // @suppress("Abstract class cannot be instantiated")
 		rest.GET(client, stringOut);
 
 		remoteTimer = millis();
 	}
 
-	if((millis() - sdCount) >= 30000){
+	if ((millis() - sdCount) >= 30000) {
 		file = SD.open("/readings.txt", FILE_APPEND);
-		Serial.println("Data to SD");
-		for(String reading : readingsArray){
-			if(file.println(reading)) {
-			    Serial.println("Message appended");
-			  } else {
-			    Serial.println("Append failed");
-			  }
+		for (String reading : readingsArray) {
+			if (!reading.equals("")) {
+				if (file.println(reading)) {
+					//It worked
+				} else {
+					Serial.println("Append failed");
+				}
+			}
+
 		}
 		file.close();
 		arrayIndex = 0;
 
-		for(int i = 0; i <= 24; i++){
+		for (int i = 0; i <= 24; i++) {
 			readingsArray[i] = "";
 		}
-
 		sdCount = millis();
 	}
 }
 
 String returnLocalTime() {
 	struct tm timeinfo;
-	if(!getLocalTime(&timeinfo)){
+	if (!getLocalTime(&timeinfo)) {
 		return "Failed to obtain time";
 	}
 
 	char timeStringBuff[50]; //50 chars should be enough
 
-	strftime(timeStringBuff, sizeof(timeStringBuff), "%B %d %Y %H:%M:%S", &timeinfo);
+	strftime(timeStringBuff, sizeof(timeStringBuff), "%B %d %Y %H:%M:%S",
+			&timeinfo);
 
 	//Construct String object
 	String asString(timeStringBuff);
 
 	return asString;
+}
+
+// https://randomnerdtutorials.com/esp32-data-logging-temperature-to-microsd-card/
+void createFile(String dir) {
+	File file = SD.open(dir, FILE_WRITE); // @suppress("Abstract class cannot be instantiated")
+
+	if (!file) {
+		Serial.println("File can't be written.");
+		return;
+	}
+
+	if (file.print("")) {
+		Serial.println("Write Succeeded!.");
+	} else {
+		Serial.println("Write Failed.");
+	}
+
+	file.close();
 }

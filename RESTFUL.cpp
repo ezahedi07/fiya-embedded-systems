@@ -19,7 +19,7 @@ void RESTFUL::processRequest(String& header) {
 	}
 }
 
-void RESTFUL::handleClient(WiFiClient client) {
+void RESTFUL::handleClient(WiFiClient client) { // @suppress("Abstract class cannot be instantiated")
 	Serial.println(client.remoteIP());
 	String header;
 	header.reserve(512);
@@ -68,7 +68,7 @@ void RESTFUL::sendHTML(WiFiClient& client) {
 	client.println();
 }
 
-void RESTFUL::GET(WiFiClient client, String stringOut) {
+void RESTFUL::GET(WiFiClient client, String stringOut) { // @suppress("Abstract class cannot be instantiated")
 	const char* HOST = "team-null.atwebpages.com";
 	String id = "&x=";
 	String val = stringOut;
@@ -84,10 +84,6 @@ void RESTFUL::GET(WiFiClient client, String stringOut) {
 		Serial.println("connection failed");
 		return;
 	}
-
-	Serial.print("GET ");
-	Serial.print(HOST);
-	Serial.println(url);
 
 	client.print("GET ");
 	client.print(url);
