@@ -604,7 +604,7 @@ String returnLocalTime() {
 	return asString;
 }
 
-// https://randomnerdtutorials.com/esp32-data-logging-temperature-to-microsd-card/
+
 void createFile(String dir) {
 	File file = SD.open(dir, FILE_WRITE); // @suppress("Abstract class cannot be instantiated")
 
